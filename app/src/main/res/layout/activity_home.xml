@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    tools:context="scoproject.com.peoplemvvm.view.home.HomeActivity"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="vm"
+            type="scoproject.com.peoplemvvm.viewmodel.home.HomeVM"/>
+    </data>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_margin="30dp"
+            android:layout_centerInParent="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <Button
+                android:onClick="@{()->vm.addMemberOnclick()}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Add Member" />
+            <Button
+                android:onClick="@{()->vm.listMemberOnClick()}"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="List Member" />
+        </LinearLayout>
+    </RelativeLayout>
+</layout>

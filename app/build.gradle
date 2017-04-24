@@ -1,0 +1,91 @@
+apply plugin: 'com.android.application'
+apply plugin: 'android-apt'
+apply plugin: 'me.tatarka.retrolambda'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.2"
+    defaultConfig {
+        applicationId "scoproject.com.peoplemvvm"
+        minSdkVersion 16
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+
+        buildConfigField "int", "CACHETIME", "432000" // 5days
+        buildConfigField "int", "LIMIT", "100"
+        buildConfigField "String", "COUNTRY", "\"EN\""
+        buildConfigField "String", "BASEURL", "\"http://api.randomuser.me/\""
+    }
+
+    dataBinding {
+        enabled = true
+    }
+
+    dexOptions {
+        javaMaxHeapSize "2g"
+    }
+
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/rxjava.properties'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+
+
+    apt 'com.android.databinding:compiler:2.3.0'
+
+    compile supportDependencies.appCompat
+    compile supportDependencies.design
+    compile supportDependencies.recyclerView
+    compile supportDependencies.cardView
+    compile supportDependencies.palette
+    compile supportDependencies.supportAnnotation
+    compile supportDependencies.percent
+    compile supportDependencies.constraint
+    compile supportDependencies.multidex
+
+    apt daggerDependencies.daggerAPT
+    compile daggerDependencies.dagger
+    provided javaxAnnotation
+
+    testCompile testingDependencies.junit
+    testCompile testingDependencies.mockito
+    testCompile testingDependencies.robolectric
+
+    compile rxDependencies.rxAndroid
+    compile rxDependencies.rxJava
+    compile circleImageView
+    compile glide
+
+    compile retrofitDependencies.retrofit
+    compile retrofitDependencies.gson
+    compile retrofitDependencies.rxAdapterJava
+    compile okhttp3.loggingInterceptor
+
+    compile butterKnifeDependencies.butterKnife
+    apt butterKnifeDependencies.butterKnifeCompiler
+}
