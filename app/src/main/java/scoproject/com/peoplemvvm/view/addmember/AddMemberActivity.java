@@ -26,6 +26,7 @@ public class AddMemberActivity extends BaseActivity {
     @Override
     protected void onCreateUI(Bundle bundle) {
         setContentView(R.layout.activity_add_member);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     @Override

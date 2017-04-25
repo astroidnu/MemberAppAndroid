@@ -18,6 +18,7 @@
             </intent-filter>
         </activity>
         <activity
+            android:parentActivityName=".view.home.HomeActivity"
             android:name=".view.addmember.AddMemberActivity"
             android:label="Add Member"/>
     </application>
