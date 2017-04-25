@@ -6,6 +6,11 @@ import android.util.Log;
 
 import java.util.Observable;
 
+import javax.inject.Inject;
+
+import scoproject.com.peoplemvvm.base.ui.ActivityScreenSwitcher;
+import scoproject.com.peoplemvvm.view.addmember.AddMemberActivity;
+
 /**
  * Created by ibnumuzzakkir on 4/21/17.
  */
@@ -13,13 +18,17 @@ import java.util.Observable;
 public class HomeVM extends Observable implements IHomeVM {
 
     private Context mContext;
+
+    @Inject
+    ActivityScreenSwitcher mScreenSwitcher;
+
     public HomeVM(@NonNull Context context){
         mContext = context;
     }
 
     @Override
     public void addMemberOnclick() {
-        Log.d(getClass().getName(), "addMemberOnclick()");
+        mScreenSwitcher.open(new AddMemberActivity.Screen());
     }
 
     @Override

@@ -9,6 +9,7 @@ import java.io.File;
 import dagger.Component;
 import scoproject.com.peoplemvvm.PeopleMVVM;
 import scoproject.com.peoplemvvm.di.module.AppModule;
+import scoproject.com.peoplemvvm.di.module.AppUIModule;
 import scoproject.com.peoplemvvm.di.module.NetworkModule;
 import scoproject.com.peoplemvvm.di.scope.AppScope;
 
@@ -17,7 +18,7 @@ import scoproject.com.peoplemvvm.di.scope.AppScope;
  */
 @AppScope
 @Component(
-        modules = {AppModule.class, NetworkModule.class}
+        modules = {AppModule.class, NetworkModule.class, AppUIModule.class}
 )
 public interface AppComponent extends IAppComponent {
     final static class Initializer {

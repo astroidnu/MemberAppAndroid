@@ -1,12 +1,16 @@
 package scoproject.com.peoplemvvm.view.addmember;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 
 import java.util.Observable;
 
 import scoproject.com.peoplemvvm.R;
 import scoproject.com.peoplemvvm.base.BaseActivity;
+import scoproject.com.peoplemvvm.base.ui.ActivityScreen;
 import scoproject.com.peoplemvvm.databinding.ActivityAddMemberBinding;
 import scoproject.com.peoplemvvm.di.component.AppComponent;
 import scoproject.com.peoplemvvm.viewmodel.addmember.AddMemberVM;
@@ -26,7 +30,7 @@ public class AddMemberActivity extends BaseActivity {
 
     @Override
     protected void initDataBinding() {
-        activityAddMemberBinding = DataBindingUtil.setContentView(this, R.layout.activity_home);
+        activityAddMemberBinding = DataBindingUtil.setContentView(this, R.layout.activity_add_member);
         mViewModel = new AddMemberVM(this);
         activityAddMemberBinding.setVm(mViewModel);
         mComponent.inject(mViewModel);
@@ -41,5 +45,22 @@ public class AddMemberActivity extends BaseActivity {
     protected void onCreateComponent(AppComponent appComponent) {
         mComponent = DaggerAddMemberComponent.builder().appComponent(appComponent).build();
         mComponent.inject(this);
+    }
+
+    public static class Screen extends ActivityScreen {
+
+        public Screen() {
+
+        }
+
+        @Override
+        protected void configureIntent(@NonNull Intent intent) {
+
+        }
+
+        @Override
+        protected Class<? extends Activity> activityClass() {
+            return AddMemberActivity.class;
+        }
     }
 }
