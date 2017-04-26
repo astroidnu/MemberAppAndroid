@@ -20,6 +20,7 @@
                 android:layout_height="wrap_content"
                 android:text="Identity Number"/>
             <EditText
+                android:text="@={vm.mUserID}"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
             <TextView
@@ -28,6 +29,7 @@
                 android:layout_height="wrap_content"
                 android:text="Fullname"/>
             <EditText
+                android:text="@={vm.mFullName}"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
             <TextView
@@ -36,6 +38,7 @@
                 android:layout_height="wrap_content"
                 android:text="Date Of Birth"/>
             <EditText
+                android:text="@={vm.mDateOfBirth}"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
             <TextView
@@ -44,10 +47,12 @@
                 android:layout_height="wrap_content"
                 android:text="Address"/>
             <EditText
+                android:text="@={vm.mAddress}"
                 android:inputType="textMultiLine"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
             <Button
+                android:onClick="@{()->vm.submitMember()}"
                 android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

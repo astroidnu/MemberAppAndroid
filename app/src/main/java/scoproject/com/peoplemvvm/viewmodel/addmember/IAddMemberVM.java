@@ -5,5 +5,5 @@ package scoproject.com.peoplemvvm.viewmodel.addmember;
  */
 
 public interface IAddMemberVM {
-    void submitMemberOnclick();
+    void submitMember();
 }

@@ -5,7 +5,12 @@ import android.databinding.ObservableField;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
+import com.google.gson.Gson;
+
+import java.util.HashMap;
 import java.util.Observable;
+
+import javax.inject.Inject;
 
 import scoproject.com.peoplemvvm.view.addmember.AddMemberActivity;
 
@@ -14,6 +19,8 @@ import scoproject.com.peoplemvvm.view.addmember.AddMemberActivity;
  */
 
 public class AddMemberVM extends Observable implements IAddMemberVM {
+    @Inject
+    Gson gson;
 
     public final ObservableField<String> mFullName = new ObservableField<>();
     public final ObservableField<String> mAddress = new ObservableField<>();
@@ -26,7 +33,7 @@ public class AddMemberVM extends Observable implements IAddMemberVM {
     }
 
     @Override
-    public void submitMemberOnclick() {
-        Log.d(getClass().getName(), "submitMemberOnclick()");
+    public void submitMember() {
+        
     }
 }
