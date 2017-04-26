@@ -18,6 +18,8 @@ android {
         buildConfigField "int", "LIMIT", "100"
         buildConfigField "String", "COUNTRY", "\"EN\""
         buildConfigField "String", "BASEURL", "\"http://api.randomuser.me/\""
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
     dataBinding {
@@ -49,20 +51,35 @@ android {
     }
 }
 
+configurations.all {
+    resolutionStrategy {
+        force supportDependencies.supportAnnotation
+        force supportDependencies.appCompat
+        force supportDependencies.recyclerView
+        force supportDependencies.design
+    }
+}
+
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
+    //Integration
+    androidTestCompile "com.android.support.test:runner:0.5"
+    androidTestCompile "com.android.support.test:rules:0.5"
 
+    //UI Testing
+    androidTestCompile "com.android.support.test.espresso:espresso-core:2.2.2"
+    androidTestCompile "com.android.support.test.espresso:espresso-contrib:2.2.2"
+    androidTestCompile "com.android.support.test.espresso:espresso-intents:2.2.2"
 
     apt 'com.android.databinding:compiler:2.3.0'
 
     compile supportDependencies.appCompat
-    compile supportDependencies.design
     compile supportDependencies.recyclerView
+    compile supportDependencies.design
+
     compile supportDependencies.cardView
     compile supportDependencies.palette
+    apt supportDependencies.supportAnnotation
     compile supportDependencies.supportAnnotation
     compile supportDependencies.percent
     compile supportDependencies.constraint

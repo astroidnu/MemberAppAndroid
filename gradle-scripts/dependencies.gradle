@@ -1,6 +1,6 @@
 ext {
     //Version
-    supportVersion = '25.3.1'
+    supportVersion = '25.1.0'
     retrofitVersion = '2.2.0'
     rxVersion = '2.0.1'
     daggerVersion = '2.0.1'
