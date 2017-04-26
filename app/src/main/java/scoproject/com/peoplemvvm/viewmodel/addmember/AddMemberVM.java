@@ -7,11 +7,14 @@ import android.util.Log;
 
 import com.google.gson.Gson;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Observable;
 
 import javax.inject.Inject;
 
+import scoproject.com.peoplemvvm.model.Member;
 import scoproject.com.peoplemvvm.view.addmember.AddMemberActivity;
 
 /**
@@ -26,14 +29,16 @@ public class AddMemberVM extends Observable implements IAddMemberVM {
     public final ObservableField<String> mAddress = new ObservableField<>();
     public final ObservableField<String> mDateOfBirth = new ObservableField<>();
     public final ObservableField<String> mUserID = new ObservableField<>();
-
+    private Member mMember;
     private Context mContext;
+
     public AddMemberVM(@NonNull Context context){
         mContext = context;
     }
 
     @Override
     public void submitMember() {
-        
+        mMember = new Member(mUserID.get(), mFullName.get(), mDateOfBirth.get(), mAddress.get());
+        Log.d(getClass().getName(), gson.toJson(mMember));
     }
 }
