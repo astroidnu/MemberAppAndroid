@@ -38,6 +38,8 @@
                 android:layout_height="wrap_content"
                 android:text="Date Of Birth"/>
             <EditText
+                android:focusable="false"
+                android:onClick="@{()->vm.setDateOfBirth()}"
                 android:text="@={vm.mDateOfBirth}"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />

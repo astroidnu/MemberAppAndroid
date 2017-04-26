@@ -8,6 +8,7 @@ import android.support.annotation.NonNull;
 
 import java.util.Observable;
 
+import butterknife.ButterKnife;
 import scoproject.com.peoplemvvm.R;
 import scoproject.com.peoplemvvm.base.BaseActivity;
 import scoproject.com.peoplemvvm.base.ui.ActivityScreen;

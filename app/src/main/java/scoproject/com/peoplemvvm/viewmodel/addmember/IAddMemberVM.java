@@ -6,4 +6,5 @@ package scoproject.com.peoplemvvm.viewmodel.addmember;
 
 public interface IAddMemberVM {
     void submitMember();
+    void setDateOfBirth();
 }
