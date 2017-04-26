@@ -31,8 +31,6 @@ import scoproject.com.peoplemvvm.view.addmember.AddMemberActivity;
 public class AddMemberVM extends Observable implements IAddMemberVM {
     @Inject
     Gson gson;
-    @BindView(R.id.add_member_ed_date_of_birth)
-    EditText mEdDateOfBirth;
 
     public final ObservableField<String> mFullName = new ObservableField<>();
     public final ObservableField<String> mAddress = new ObservableField<>();

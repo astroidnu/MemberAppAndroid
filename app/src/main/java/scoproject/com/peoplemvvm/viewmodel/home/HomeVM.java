@@ -31,6 +31,10 @@ public class HomeVM extends Observable implements IHomeVM {
         mScreenSwitcher.open(new AddMemberActivity.Screen());
     }
 
+    public Context getmContext(){
+        return this.mContext;
+    }
+
     @Override
     public void listMemberOnClick() {
         Log.d(getClass().getName(), "listMemberOnClick()");

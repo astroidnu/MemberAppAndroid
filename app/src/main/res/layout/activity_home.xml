@@ -18,6 +18,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
             <Button
+                android:id="@+id/activity_home_add_member"
                 android:onClick="@{()->vm.addMemberOnclick()}"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
