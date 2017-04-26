@@ -1,11 +1,8 @@
 package scoproject.com.peoplemvvm.di.component;
 
-import javax.inject.Singleton;
-
 import dagger.Component;
-import scoproject.com.peoplemvvm.di.BaseTest;
-import scoproject.com.peoplemvvm.di.scope.AppScope;
 import scoproject.com.peoplemvvm.di.scope.TestScope;
+import scoproject.com.peoplemvvm.di.viewmodel.HomeVMTest;
 import scoproject.com.peoplemvvm.viewmodel.home.HomeVM;
 
 /**
@@ -16,6 +13,6 @@ import scoproject.com.peoplemvvm.viewmodel.home.HomeVM;
 @TestScope
 @Component(dependencies = {AppComponent.class})
 public interface TestComponent {
-    void inject(BaseTest baseTest);
     void inject(HomeVM mViewModel);
+    void inject(HomeVMTest homeVMTest);
 }
