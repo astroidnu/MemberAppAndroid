@@ -5,9 +5,9 @@ Member App Android build with technology :
  2. RXjava 2 
  3. Retrofit 2
  4. Dagger 2
+ 5. Testing tools using Roboelectric and Espresso 
  
 Incoming todo list : 
  1. Implement API to add new member 
  2. Create Singleton for Network 
- 3. Create Unit testing using espresso 
- 4. Mock response using roboelectric
+ 3. Create Unit and instrument testing
