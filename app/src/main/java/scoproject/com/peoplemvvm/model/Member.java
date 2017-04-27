@@ -1,12 +1,23 @@
 package scoproject.com.peoplemvvm.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.SerializedName;
+
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.ObjectStreamException;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by ibnumuzzakkir on 4/26/17.
  */
 
-public class Member {
+public class Member implements Serializable {
     @SerializedName("userid")
     private String userid;
     @SerializedName("fullname")
@@ -54,4 +65,26 @@ public class Member {
     public void setAddress(String address) {
         this.address = address;
     }
+
+    private void writeObject(java.io.ObjectOutputStream stream)
+            throws IOException{
+        stream.writeObject(userid);
+        stream.writeObject(fullname);
+        stream.writeObject(dateofbirth);
+        stream.writeObject(address);
+    }
+
+    private void readObjectNoData()
+            throws ObjectStreamException {
+
+    }
+
+    private void readObject(ObjectInputStream stream)
+            throws ClassNotFoundException, IOException {
+        userid = (String) stream.readObject();
+        fullname = (String) stream.readObject();
+        dateofbirth = (String) stream.readObject();
+        address = (String) stream.readObject();
+    }
+
 }
