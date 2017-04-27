@@ -10,4 +10,4 @@ Member App Android build with technology :
 Incoming todo list : 
  1. Implement API to add new member 
  2. Create Singleton for Network 
- 3. Create Unit and instrument testing
+ 3. Create Mock Response API using Mockito 
