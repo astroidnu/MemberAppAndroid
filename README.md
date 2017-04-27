@@ -9,5 +9,6 @@ Member App Android build with technology :
  
 Incoming todo list : 
  1. Implement API to add new member 
- 2. Create Singleton for Network 
+ 2. Create Singleton for API for each activity
  3. Create Mock Response API using Mockito 
+ 4. Create Recycleview using diffutil
