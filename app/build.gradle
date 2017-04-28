@@ -60,6 +60,7 @@ configurations.all {
         force supportDependencies.appCompat
         force supportDependencies.recyclerView
         force supportDependencies.design
+        force "com.google.guava:guava:18.0"
         force "com.android.support:support-v4:25.1.0"
     }
 }
@@ -90,6 +91,7 @@ dependencies {
     compile supportDependencies.multidex
 
     apt daggerDependencies.daggerAPT
+    compile daggerDependencies.daggerAPT
     testApt daggerDependencies.daggerAPT
     androidTestApt daggerDependencies.daggerAPT
     compile daggerDependencies.dagger
