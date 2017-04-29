@@ -21,6 +21,8 @@ import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 import scoproject.com.peoplemvvm.di.scope.AppScope;
+import scoproject.com.peoplemvvm.networking.NetworkService;
+import scoproject.com.peoplemvvm.networking.addmember.AddMemberAPIService;
 
 /**
  * Created by ibnumuzzakkir on 4/21/17.
@@ -50,12 +52,27 @@ public class NetworkModule {
 
     @Provides
     @AppScope
-    Gson provideGson(){ return new Gson();}
+    Gson provideGson() {
+        return new Gson();
+    }
+
+    @Provides
+    @AppScope
+    public NetworkService providesNetworkService(
+            Retrofit retrofit) {
+        return retrofit.create(NetworkService.class);
+    }
+
+    @Provides
+    @AppScope
+    public AddMemberAPIService provideAddMemberAPIService(NetworkService mNetworkService){
+        return  new AddMemberAPIService(mNetworkService);
+    }
 
     private OkHttpClient getUnsafeOkHttpClient() {
         try {
             // Create a trust manager that does not validate certificate chains
-            final TrustManager[] trustAllCerts = new TrustManager[] {
+            final TrustManager[] trustAllCerts = new TrustManager[]{
                     new X509TrustManager() {
                         @Override
                         public void checkClientTrusted(java.security.cert.X509Certificate[] chain, String authType) throws CertificateException {
@@ -100,5 +117,4 @@ public class NetworkModule {
             throw new RuntimeException(e);
         }
     }
-
 }
