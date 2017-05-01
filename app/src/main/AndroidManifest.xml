@@ -21,6 +21,10 @@
             android:parentActivityName=".view.home.HomeActivity"
             android:name=".view.addmember.AddMemberActivity"
             android:label="Add Member"/>
+        <activity
+            android:parentActivityName=".view.listpeople.ListPeopleActivity"
+            android:name=".view.listpeople.ListPeopleActivity"
+            android:label="People List"/>
     </application>
 
 </manifest>

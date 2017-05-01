@@ -23,6 +23,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import scoproject.com.peoplemvvm.di.scope.AppScope;
 import scoproject.com.peoplemvvm.networking.NetworkService;
 import scoproject.com.peoplemvvm.networking.addmember.AddMemberAPIService;
+import scoproject.com.peoplemvvm.networking.listmember.ListMemberAPIService;
 
 /**
  * Created by ibnumuzzakkir on 4/21/17.
@@ -67,6 +68,12 @@ public class NetworkModule {
     @AppScope
     public AddMemberAPIService provideAddMemberAPIService(NetworkService mNetworkService){
         return  new AddMemberAPIService(mNetworkService);
+    }
+
+    @Provides
+    @AppScope
+    public ListMemberAPIService provideListMemberAPIService(NetworkService mNetworkService){
+        return  new ListMemberAPIService(mNetworkService);
     }
 
     private OkHttpClient getUnsafeOkHttpClient() {

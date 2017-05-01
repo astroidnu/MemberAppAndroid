@@ -17,7 +17,7 @@ android {
         buildConfigField "int", "CACHETIME", "432000" // 5days
         buildConfigField "int", "LIMIT", "100"
         buildConfigField "String", "COUNTRY", "\"EN\""
-        buildConfigField "String", "BASEURL", "\"http://api.randomuser.me/\""
+        buildConfigField "String", "BASEURL", "\"https://randomuser.me/api/?\""
     }
 
     dataBinding {
