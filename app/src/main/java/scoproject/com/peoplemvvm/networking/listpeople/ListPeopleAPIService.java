@@ -1,4 +1,4 @@
-package scoproject.com.peoplemvvm.networking.listmember;
+package scoproject.com.peoplemvvm.networking.listpeople;
 
 import android.util.Log;
 
@@ -14,7 +14,7 @@ import scoproject.com.peoplemvvm.networking.NetworkService;
  * Created by ibnumuzzakkir on 4/22/17.
  */
 
-public class ListMemberAPIService {
+public class ListPeopleAPIService {
     private PeopleResult mPeopleResult;
     private NetworkService mNetworkService;
 
@@ -24,7 +24,7 @@ public class ListMemberAPIService {
         return isRequestingListPeopleService;
     }
 
-    public ListMemberAPIService(NetworkService networkService){
+    public ListPeopleAPIService(NetworkService networkService){
         mNetworkService = networkService;
     }
 
