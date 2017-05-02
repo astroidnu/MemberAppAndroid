@@ -2,6 +2,7 @@ package scoproject.com.peoplemvvm.base;
 
 import android.content.Context;
 import android.content.Intent;
+import android.databinding.ViewDataBinding;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.SparseArray;
@@ -21,11 +22,12 @@ import scoproject.com.peoplemvvm.di.component.AppComponent;
  * Created by ibnumuzzakkir on 4/21/17.
  */
 
-public abstract class BaseActivity extends AppCompatActivity implements Observer {
+public abstract class BaseActivity<T extends BaseViewModel> extends AppCompatActivity implements Observer {
     protected abstract void onCreateUI(Bundle bundle);
     protected abstract void initDataBinding();
     public abstract void update(Observable o, Object arg);
-    private SparseArray<ResultCallback> mResultCallbacks;
+
+    protected T viewModel;
 
     @Inject
     ActivityScreenSwitcher activityScreenSwitcher;
@@ -66,25 +68,21 @@ public abstract class BaseActivity extends AppCompatActivity implements Observer
     }
 
     @Override
+    protected void onDestroy(){
+        super.onDestroy();
+    }
+
+    @Override
+    protected void onStop(){
+        super.onStop();
+//        viewModel.clearSubscriptions();
+    }
+
+    @Override
     public void onResume(){
         super.onResume();
         activityScreenSwitcher.attach(this);
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        activityScreenSwitcher.attach(this);
-        if (mResultCallbacks != null) {
-            ResultCallback callback = mResultCallbacks.get(requestCode);
-            if (callback != null) {
-                callback.onResult(resultCode, data);
-            }
-        }
-        super.onActivityResult(requestCode, resultCode, data);
-    }
-
-    public interface ResultCallback {
-        public void onResult(int resultCode, Intent data);
-    }
 
 }

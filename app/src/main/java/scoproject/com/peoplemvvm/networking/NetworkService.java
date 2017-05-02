@@ -18,6 +18,6 @@ public interface NetworkService {
     Observable<AddMemberResponse> addMember(@Body Member member);
 
     //Getting data from API Random User me
-    @GET("results=10")
+    @GET("?results=10")
     Observable<PeopleData> getPeopleList();
 }

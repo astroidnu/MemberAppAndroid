@@ -7,15 +7,17 @@ import java.util.Observable;
 
 import javax.inject.Inject;
 
+import scoproject.com.peoplemvvm.base.BaseViewModel;
 import scoproject.com.peoplemvvm.base.ui.ActivityScreenSwitcher;
 import scoproject.com.peoplemvvm.view.addmember.AddMemberActivity;
+import scoproject.com.peoplemvvm.view.home.HomeActivity;
 import scoproject.com.peoplemvvm.view.listpeople.ListPeopleActivity;
 
 /**
  * Created by ibnumuzzakkir on 4/21/17.
  */
 
-public class HomeVM extends Observable implements IHomeVM {
+public class HomeVM extends BaseViewModel<HomeActivity> implements IHomeVM {
 
     private Context mContext;
 

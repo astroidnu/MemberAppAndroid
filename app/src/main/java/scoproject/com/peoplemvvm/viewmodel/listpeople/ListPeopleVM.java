@@ -7,11 +7,10 @@ import android.util.Log;
 
 import com.google.gson.Gson;
 
+
 import javax.inject.Inject;
 
-import io.reactivex.Flowable;
-import io.reactivex.Observable;
-import scoproject.com.peoplemvvm.model.PeopleData;
+import scoproject.com.peoplemvvm.base.BaseViewModel;
 import scoproject.com.peoplemvvm.networking.listpeople.ListPeopleAPIService;
 import scoproject.com.peoplemvvm.view.listpeople.ListPeopleActivity;
 
@@ -19,28 +18,35 @@ import scoproject.com.peoplemvvm.view.listpeople.ListPeopleActivity;
  * Created by ibnumuzzakkir on 4/22/17.
  */
 
-public class ListPeopleVM extends BaseObservable implements IListPeopleVM {
+public class ListPeopleVM extends BaseViewModel<ListPeopleActivity> implements IListPeopleVM {
     private Context mContext;
-
-    @Inject
-    Gson gson;
 
     @Inject
     ListPeopleAPIService listPeopleAPIService;
 
+    @Inject
+    Gson gson;
+
     public ListPeopleVM(@NonNull Context context) {
         mContext = context;
-        gson.toJson("HELLO");
 //        listPeopleAPIService.getPeopleList();
     }
 
-    public ListPeopleVM(){
 
+    @Override
+    public void onLoad(){
+        super.onLoad();
+        Log.d(getClass().getName(), "onLoad()");
+        //Getting data from Network Interface
+        compositeDisposable.add(
+                listPeopleAPIService.getPeopleList().subscribe(peopleData -> Log.d(getClass().getName(), gson.toJson(peopleData.getResults())),
+                throwable -> Log.d(getClass().getName(), throwable.getMessage())));
     }
 
     @Override
-    public Observable<PeopleData> getPeopleList() {
-
-        return null;
+    public void onStop(){
+        super.onStop();
+        clearSubscriptions();
     }
+
 }

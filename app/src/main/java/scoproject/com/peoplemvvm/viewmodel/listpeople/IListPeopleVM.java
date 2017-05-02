@@ -8,5 +8,7 @@ import scoproject.com.peoplemvvm.model.PeopleData;
  */
 
 public interface IListPeopleVM {
-    Observable<PeopleData> getPeopleList();
+    void onLoad();
+    void onStop();
+
 }

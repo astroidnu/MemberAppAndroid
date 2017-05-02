@@ -22,7 +22,7 @@ import scoproject.com.peoplemvvm.viewmodel.listpeople.ListPeopleVM;
  * Created by ibnumuzzakkir on 4/22/17.
  */
 
-public class ListPeopleActivity extends BaseActivity {
+public class ListPeopleActivity extends BaseActivity<ListPeopleVM> {
 
     private ListPeopleComponent mComponent;
     private ListPeopleVM mViewModel;
@@ -38,6 +38,7 @@ public class ListPeopleActivity extends BaseActivity {
         activityListPeopleBinding = DataBindingUtil.setContentView(this, R.layout.activity_list_people);
         mViewModel = new ListPeopleVM(this);
         mComponent.inject(mViewModel);
+        mViewModel.takeContext(this);
         activityListPeopleBinding.setVm(mViewModel);
     }
 

@@ -21,6 +21,7 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.OnClick;
 import scoproject.com.peoplemvvm.R;
+import scoproject.com.peoplemvvm.base.BaseViewModel;
 import scoproject.com.peoplemvvm.model.Member;
 import scoproject.com.peoplemvvm.view.addmember.AddMemberActivity;
 
@@ -28,7 +29,7 @@ import scoproject.com.peoplemvvm.view.addmember.AddMemberActivity;
  * Created by ibnumuzzakkir on 4/22/17.
  */
 
-public class AddMemberVM extends Observable implements IAddMemberVM {
+public class AddMemberVM  extends BaseViewModel<AddMemberActivity> implements IAddMemberVM {
     @Inject
     Gson gson;
 

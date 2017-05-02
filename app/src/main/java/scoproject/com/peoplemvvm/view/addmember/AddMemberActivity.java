@@ -20,7 +20,7 @@ import scoproject.com.peoplemvvm.viewmodel.addmember.AddMemberVM;
  * Created by ibnumuzzakkir on 4/22/17.
  */
 
-public class AddMemberActivity extends BaseActivity {
+public class AddMemberActivity extends BaseActivity<AddMemberVM> {
     private AddMemberComponent mComponent;
     private AddMemberVM mViewModel;
     private ActivityAddMemberBinding activityAddMemberBinding;
@@ -34,8 +34,10 @@ public class AddMemberActivity extends BaseActivity {
     protected void initDataBinding() {
         activityAddMemberBinding = DataBindingUtil.setContentView(this, R.layout.activity_add_member);
         mViewModel = new AddMemberVM(this);
-        activityAddMemberBinding.setVm(mViewModel);
         mComponent.inject(mViewModel);
+        mViewModel.takeContext(this);
+        activityAddMemberBinding.setVm(mViewModel);
+
     }
 
     @Override
