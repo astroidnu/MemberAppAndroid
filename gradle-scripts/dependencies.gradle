@@ -44,7 +44,7 @@ ext {
     retrofitDependencies = [retrofit: buildDependency(retrofitPackage, 'retrofit', retrofitVersion),
                             gson: buildDependency(retrofitPackage, 'converter-gson', retrofitVersion),
                             converterGson : buildDependency(retrofitPackage, 'converter-gson', retrofitVersion),
-                            rxAdapterJava: buildDependency(retrofitPackage, 'adapter-rxjava', retrofitVersion)]
+                            rxAdapterJava: buildDependency(retrofitPackage, 'adapter-rxjava2', retrofitVersion)]
 
     rxDependencies = [rxAndroid: buildDependency(reactivePackage, 'rxandroid',rxVersion),
                       rxJava : buildDependency(reactivePackage, 'rxjava', rxVersion) ]

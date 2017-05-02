@@ -18,8 +18,9 @@ import okhttp3.Cache;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
+import scoproject.com.peoplemvvm.BuildConfig;
 import scoproject.com.peoplemvvm.di.scope.AppScope;
 import scoproject.com.peoplemvvm.networking.NetworkService;
 import scoproject.com.peoplemvvm.networking.addmember.AddMemberAPIService;
@@ -44,10 +45,10 @@ public class NetworkModule {
                 .create();
 
         return new Retrofit.Builder()
-                .baseUrl("#")
+                .baseUrl(BuildConfig.BASEURL)
                 .client(getUnsafeOkHttpClient())
                 .addConverterFactory(GsonConverterFactory.create(gson))
-                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build();
     }
 
@@ -72,7 +73,7 @@ public class NetworkModule {
 
     @Provides
     @AppScope
-    public ListPeopleAPIService provideListMemberAPIService(NetworkService mNetworkService){
+    public ListPeopleAPIService provideListPeopleAPIService(NetworkService mNetworkService){
         return  new ListPeopleAPIService(mNetworkService);
     }
 

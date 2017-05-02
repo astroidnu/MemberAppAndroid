@@ -12,6 +12,8 @@ import scoproject.com.peoplemvvm.di.module.AppModule;
 import scoproject.com.peoplemvvm.di.module.AppUIModule;
 import scoproject.com.peoplemvvm.di.module.NetworkModule;
 import scoproject.com.peoplemvvm.di.scope.AppScope;
+import scoproject.com.peoplemvvm.networking.listpeople.ListPeopleAPIService;
+import scoproject.com.peoplemvvm.viewmodel.listpeople.ListPeopleVM;
 
 /**
  * Created by ibnumuzzakkir on 4/21/17.
@@ -33,4 +35,7 @@ public interface AppComponent extends IAppComponent {
 
     Application getApplication();
     Gson getGson();
+
+    //API Services
+    ListPeopleAPIService getListPeopleApiService();
 }

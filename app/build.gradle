@@ -108,7 +108,7 @@ dependencies {
 
     compile retrofitDependencies.retrofit
     compile retrofitDependencies.gson
-    compile retrofitDependencies.rxAdapterJava
+    compile 'com.squareup.retrofit2:adapter-rxjava2:2.2.0'
     compile okhttp3.loggingInterceptor
 
     compile butterKnifeDependencies.butterKnife

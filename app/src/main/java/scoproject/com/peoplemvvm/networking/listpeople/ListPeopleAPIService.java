@@ -29,7 +29,6 @@ public class ListPeopleAPIService {
     }
 
     public Flowable<PeopleData> getPeopleList() {
-
         return mNetworkService.getPeopleList()
                 .doOnSubscribe(disposable -> isRequestingListPeopleService = true)
                 .doOnTerminate(() -> isRequestingListPeopleService = false)

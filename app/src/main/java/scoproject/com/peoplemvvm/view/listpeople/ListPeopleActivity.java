@@ -8,11 +8,14 @@ import android.support.annotation.NonNull;
 
 import java.util.Observable;
 
+import javax.inject.Inject;
+
 import scoproject.com.peoplemvvm.R;
 import scoproject.com.peoplemvvm.base.BaseActivity;
 import scoproject.com.peoplemvvm.base.ui.ActivityScreen;
 import scoproject.com.peoplemvvm.databinding.ActivityListPeopleBinding;
 import scoproject.com.peoplemvvm.di.component.AppComponent;
+import scoproject.com.peoplemvvm.networking.listpeople.ListPeopleAPIService;
 import scoproject.com.peoplemvvm.viewmodel.listpeople.ListPeopleVM;
 
 /**
@@ -20,21 +23,22 @@ import scoproject.com.peoplemvvm.viewmodel.listpeople.ListPeopleVM;
  */
 
 public class ListPeopleActivity extends BaseActivity {
+
     private ListPeopleComponent mComponent;
     private ListPeopleVM mViewModel;
     private ActivityListPeopleBinding activityListPeopleBinding;
+
     @Override
     protected void onCreateUI(Bundle bundle) {
         setContentView(R.layout.activity_list_people);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     @Override
     protected void initDataBinding() {
         activityListPeopleBinding = DataBindingUtil.setContentView(this, R.layout.activity_list_people);
         mViewModel = new ListPeopleVM(this);
-        activityListPeopleBinding.setVm(mViewModel);
         mComponent.inject(mViewModel);
+        activityListPeopleBinding.setVm(mViewModel);
     }
 
     @Override
