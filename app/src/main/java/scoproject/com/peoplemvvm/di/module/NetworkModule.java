@@ -114,8 +114,8 @@ public class NetworkModule {
             OkHttpClient okHttpClient = new OkHttpClient.Builder()
                     .addInterceptor(loggingInterceptor)
                     .cache(cache)
-                    .readTimeout(60, TimeUnit.SECONDS)
-                    .connectTimeout(60, TimeUnit.SECONDS)
+                    .readTimeout(180, TimeUnit.SECONDS)
+                    .connectTimeout(180, TimeUnit.SECONDS)
                     .hostnameVerifier((hostname, session) -> true)
                     .sslSocketFactory(sslSocketFactory)
                     .build();

@@ -36,9 +36,6 @@ public class PeopleResult {
     @SerializedName("cell")
     @Expose
     private String cell;
-    @SerializedName("id")
-    @Expose
-    private PeopleId id;
     @SerializedName("picture")
     @Expose
     private PeoplePicture picture;
@@ -116,14 +113,6 @@ public class PeopleResult {
 
     public void setCell(String cell) {
         this.cell = cell;
-    }
-
-    public PeopleId getId() {
-        return id;
-    }
-
-    public void setId(PeopleId id) {
-        this.id = id;
     }
 
     public PeoplePicture getPicture() {

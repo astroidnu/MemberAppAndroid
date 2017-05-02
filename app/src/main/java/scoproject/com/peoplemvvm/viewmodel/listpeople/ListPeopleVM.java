@@ -39,7 +39,7 @@ public class ListPeopleVM extends BaseViewModel<ListPeopleActivity> implements I
         Log.d(getClass().getName(), "onLoad()");
         //Getting data from Network Interface
         compositeDisposable.add(
-                listPeopleAPIService.getPeopleList().subscribe(peopleData -> Log.d(getClass().getName(), gson.toJson(peopleData.getResults())),
+                listPeopleAPIService.getPeopleList().subscribe(peopleData -> Log.d(getClass().getName(), gson.toJson(peopleData)),
                 throwable -> Log.d(getClass().getName(), throwable.getMessage())));
     }
 

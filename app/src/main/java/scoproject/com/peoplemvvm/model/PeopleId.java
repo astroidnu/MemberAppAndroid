@@ -13,7 +13,7 @@ public class PeopleId {
     private String name;
     @SerializedName("value")
     @Expose
-    private Object value;
+    private String value;
 
     public String getName() {
         return name;
@@ -23,11 +23,11 @@ public class PeopleId {
         this.name = name;
     }
 
-    public Object getValue() {
+    public String getValue() {
         return value;
     }
 
-    public void setValue(Object value) {
+    public void setValue(String value) {
         this.value = value;
     }
 }
