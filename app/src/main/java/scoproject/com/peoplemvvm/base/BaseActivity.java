@@ -23,7 +23,6 @@ import scoproject.com.peoplemvvm.di.component.AppComponent;
  */
 
 public abstract class BaseActivity<T extends BaseViewModel> extends AppCompatActivity implements Observer {
-    protected abstract void onCreateUI(Bundle bundle);
     protected abstract void initDataBinding();
     public abstract void update(Observable o, Object arg);
 
@@ -36,7 +35,6 @@ public abstract class BaseActivity<T extends BaseViewModel> extends AppCompatAct
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         onCreateComponent(PeopleMVVM.getApp().component());
-        onCreateUI(savedInstanceState);
         initDataBinding();
         if (activityScreenSwitcher == null) {
             throw new IllegalStateException(

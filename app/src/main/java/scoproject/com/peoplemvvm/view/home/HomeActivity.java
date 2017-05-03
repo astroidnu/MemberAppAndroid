@@ -18,11 +18,6 @@ public class HomeActivity extends BaseActivity<HomeVM> {
     private ActivityHomeBinding activityHomeBinding;
 
     @Override
-    protected void onCreateUI(Bundle bundle) {
-        setContentView(R.layout.activity_home);
-    }
-
-    @Override
     protected void initDataBinding() {
         activityHomeBinding = DataBindingUtil.setContentView(this, R.layout.activity_home);
         mViewModel = new HomeVM(this);

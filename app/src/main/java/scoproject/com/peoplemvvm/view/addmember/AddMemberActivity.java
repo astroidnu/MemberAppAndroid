@@ -24,14 +24,10 @@ public class AddMemberActivity extends BaseActivity<AddMemberVM> {
     private AddMemberComponent mComponent;
     private AddMemberVM mViewModel;
     private ActivityAddMemberBinding activityAddMemberBinding;
-    @Override
-    protected void onCreateUI(Bundle bundle) {
-        setContentView(R.layout.activity_add_member);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-    }
 
     @Override
     protected void initDataBinding() {
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         activityAddMemberBinding = DataBindingUtil.setContentView(this, R.layout.activity_add_member);
         mViewModel = new AddMemberVM(this);
         mComponent.inject(mViewModel);

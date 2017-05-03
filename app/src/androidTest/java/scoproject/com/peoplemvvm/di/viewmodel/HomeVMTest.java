@@ -37,7 +37,7 @@ public class HomeVMTest{
     public void setUp() throws Exception{
         TestComponent mComponent = DaggerTestComponent.builder().appComponent(PeopleMVVM.getApp().component()).build();
         mComponent.inject(this);
-        mHomeVM = new HomeVM(PeopleMVVM.getApp());
+//        mHomeVM = new HomeVM(PeopleMVVM.getApp());
     }
 
     @Test

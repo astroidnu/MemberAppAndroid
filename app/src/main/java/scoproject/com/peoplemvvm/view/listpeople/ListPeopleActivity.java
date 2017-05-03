@@ -29,11 +29,6 @@ public class ListPeopleActivity extends BaseActivity<ListPeopleVM> {
     private ActivityListPeopleBinding activityListPeopleBinding;
 
     @Override
-    protected void onCreateUI(Bundle bundle) {
-        setContentView(R.layout.activity_list_people);
-    }
-
-    @Override
     protected void initDataBinding() {
         activityListPeopleBinding = DataBindingUtil.setContentView(this, R.layout.activity_list_people);
         mViewModel = new ListPeopleVM(this);
