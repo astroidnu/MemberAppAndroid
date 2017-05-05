@@ -2,6 +2,9 @@ package scoproject.com.peoplemvvm.base;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Parcel;
+import android.os.Parcelable;
+import android.support.annotation.CallSuper;
 
 import java.util.Observable;
 
@@ -58,4 +61,5 @@ public class BaseViewModel<T extends Context> extends Observable {
     public void clearSubscriptions() {
         compositeDisposable.clear();
     }
+
 }

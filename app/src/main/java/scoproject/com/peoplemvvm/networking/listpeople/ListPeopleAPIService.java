@@ -22,7 +22,6 @@ import scoproject.com.peoplemvvm.networking.addmember.AddMemberResponse;
  */
 
 public class ListPeopleAPIService {
-    private PeopleResult mPeopleResult;
     private NetworkService mNetworkService;
 
     public ListPeopleAPIService(NetworkService networkService){
@@ -37,35 +36,6 @@ public class ListPeopleAPIService {
                 .toFlowable(BackpressureStrategy.BUFFER);
     }
 
-//    public void getPeopleList() {
-//        mNetworkService.getPeopleList()
-//                .subscribeOn(Schedulers.io())
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .subscribe(new Observer<PeopleData>() {
-//                    @Override
-//                    public void onSubscribe(Disposable d) {
-//                        Log.d(getClass().getName(), "onSubscribe");
-//                    }
-//
-//                    @Override
-//                    public void onNext(PeopleData value) {
-//                        Log.d(getClass().getName(), "onNext");
-//                    }
-//
-//                    @Override
-//                    public void onError(Throwable e) {
-//                        Log.d(getClass().getName(), "onError" + e.getMessage());
-//                    }
-//
-//                    @Override
-//                    public void onComplete() {
-//                        Log.d(getClass().getName(), "onComplete");
-//                    }
-//                });
-//    }
-    private void handleSuccess(PeopleData peopleData){
-        Log.d(getClass().getName(), peopleData.toString());
-    }
     private void handleAccountError(Throwable throwable) {
         Log.e(getClass().getName(), throwable.getMessage());
     }
