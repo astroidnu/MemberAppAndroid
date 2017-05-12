@@ -55,7 +55,7 @@ public class BaseViewModel<T extends Context> extends Observable {
         return context;
     }
 
-    public void clearSubscriptions() {
+    public void clearCompositeDisposable() {
         compositeDisposable.clear();
     }
 }

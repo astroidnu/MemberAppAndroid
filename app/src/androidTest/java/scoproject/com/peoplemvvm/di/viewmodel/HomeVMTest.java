@@ -46,4 +46,11 @@ public class HomeVMTest{
         onView(withId(R.id.activity_home_add_member))
                 .perform(click());
     }
+
+    @Test
+    public void listPeople() throws Exception{
+        activityTestRule.launchActivity(null);
+        onView(withId(R.id.activity_home_list_member))
+                .perform(click());
+    }
 }

@@ -24,6 +24,7 @@
                 android:layout_height="wrap_content"
                 android:text="Add Member" />
             <Button
+                android:id="@+id/activity_home_list_member"
                 android:onClick="@{()->vm.listMemberOnClick()}"
                 android:layout_marginTop="10dp"
                 android:layout_width="match_parent"

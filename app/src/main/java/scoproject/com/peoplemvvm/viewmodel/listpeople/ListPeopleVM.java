@@ -3,6 +3,7 @@ package scoproject.com.peoplemvvm.viewmodel.listpeople;
 import android.content.Context;
 import android.databinding.BaseObservable;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.LinearLayoutManager;
 import android.util.Log;
 
 import com.google.gson.Gson;
@@ -10,7 +11,10 @@ import com.google.gson.Gson;
 
 import javax.inject.Inject;
 
+import scoproject.com.peoplemvvm.adapter.listpeople.ListPeopleAdapter;
 import scoproject.com.peoplemvvm.base.BaseViewModel;
+import scoproject.com.peoplemvvm.model.PeopleData;
+import scoproject.com.peoplemvvm.model.PeopleResult;
 import scoproject.com.peoplemvvm.networking.listpeople.ListPeopleAPIService;
 import scoproject.com.peoplemvvm.view.listpeople.ListPeopleActivity;
 
@@ -27,9 +31,13 @@ public class ListPeopleVM extends BaseViewModel<ListPeopleActivity> implements I
     @Inject
     Gson gson;
 
+    public ListPeopleAdapter mListPeopleAdapter;
+    public LinearLayoutManager mLinearLayoutManager;
+
+    PeopleData mPeopleData;
+
     public ListPeopleVM(@NonNull Context context) {
         mContext = context;
-//        listPeopleAPIService.getPeopleList();
     }
 
 
@@ -39,14 +47,20 @@ public class ListPeopleVM extends BaseViewModel<ListPeopleActivity> implements I
         Log.d(getClass().getName(), "onLoad()");
         //Getting data from Network Interface
         compositeDisposable.add(
-                listPeopleAPIService.getPeopleList().subscribe(peopleData -> Log.d(getClass().getName(), gson.toJson(peopleData)),
+                listPeopleAPIService.getPeopleList().subscribe(peopleData -> setData(peopleData),
                 throwable -> Log.d(getClass().getName(), throwable.getMessage())));
     }
 
     @Override
     public void onStop(){
         super.onStop();
-        clearSubscriptions();
+        clearCompositeDisposable();
+    }
+
+    private void setData(PeopleData peopleData){
+        mListPeopleAdapter = new ListPeopleAdapter(peopleData, mContext);
+        mLinearLayoutManager = new LinearLayoutManager(mContext,LinearLayoutManager.VERTICAL,false);
+        mListPeopleAdapter.notifyDataSetChanged();
     }
 
 }
