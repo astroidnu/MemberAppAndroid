@@ -2,6 +2,7 @@ package scoproject.com.peoplemvvm.base;
 
 import android.content.Context;
 import android.content.Intent;
+import android.databinding.BaseObservable;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.support.annotation.CallSuper;
@@ -16,7 +17,7 @@ import io.reactivex.disposables.CompositeDisposable;
  * Garena Indonesia
  */
 
-public class BaseViewModel<T extends Context> extends Observable {
+public class BaseViewModel<T extends Context> extends BaseObservable {
     private T context = null;
     protected CompositeDisposable compositeDisposable;
     private boolean loaded;

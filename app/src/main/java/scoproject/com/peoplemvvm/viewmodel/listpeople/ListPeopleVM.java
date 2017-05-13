@@ -2,6 +2,7 @@ package scoproject.com.peoplemvvm.viewmodel.listpeople;
 
 import android.content.Context;
 import android.databinding.BaseObservable;
+import android.databinding.Bindable;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -12,8 +13,10 @@ import com.google.gson.Gson;
 
 import javax.inject.Inject;
 
+import scoproject.com.peoplemvvm.BR;
 import scoproject.com.peoplemvvm.adapter.listpeople.ListPeopleAdapter;
 import scoproject.com.peoplemvvm.base.BaseViewModel;
+import scoproject.com.peoplemvvm.databinding.ActivityListPeopleBinding;
 import scoproject.com.peoplemvvm.model.PeopleData;
 import scoproject.com.peoplemvvm.model.PeopleResult;
 import scoproject.com.peoplemvvm.networking.listpeople.ListPeopleAPIService;
@@ -34,20 +37,22 @@ public class ListPeopleVM extends BaseViewModel<ListPeopleActivity> implements I
 
     public ListPeopleAdapter mListPeopleAdapter;
     public LinearLayoutManager mLinearLayoutManager;
-    public RecyclerView mRecyclerView;
+    public ActivityListPeopleBinding mActivityListPeopleBinding;
 
-    public PeopleData mPeopleData = new PeopleData();
+    private boolean isLoading;
 
-    public ListPeopleVM(@NonNull Context context, RecyclerView recyclerView) {
+
+    public ListPeopleVM(@NonNull Context context, ActivityListPeopleBinding activityListPeopleBinding) {
         mContext = context;
-        mRecyclerView = recyclerView;
+        mActivityListPeopleBinding = activityListPeopleBinding;
     }
 
 
     @Override
     public void onLoad(){
         super.onLoad();
-        Log.d(getClass().getName(), "onLoad()");
+//        Log.d(getClass().getName(), "onLoad()");
+        setLoading(true);
         mLinearLayoutManager = new LinearLayoutManager(mContext,LinearLayoutManager.VERTICAL,false);
         compositeDisposable.add(
                 listPeopleAPIService.getPeopleList().subscribe(peopleData -> setData(peopleData),
@@ -61,8 +66,19 @@ public class ListPeopleVM extends BaseViewModel<ListPeopleActivity> implements I
     }
 
     public void setData(PeopleData peopleData){
+        setLoading(false);
         mListPeopleAdapter = new ListPeopleAdapter(peopleData, mContext);
-        mRecyclerView.setAdapter(mListPeopleAdapter);
+        mActivityListPeopleBinding.listPeople.setAdapter(mListPeopleAdapter);
         mListPeopleAdapter.notifyDataSetChanged();
+    }
+
+    @Bindable
+    public boolean isLoading(){
+        return isLoading;
+    }
+
+    public void setLoading(boolean loading){
+        isLoading = loading;
+        notifyPropertyChanged(BR._all);
     }
 }
