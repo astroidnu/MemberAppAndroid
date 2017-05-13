@@ -56,7 +56,7 @@ public class ListPeopleAdapter extends RecyclerView.Adapter<ListPeopleAdapter.Vi
 
     @Override
     public int getItemCount() {
-        return 2;
+        return mPeopleDatas.getResults().size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
