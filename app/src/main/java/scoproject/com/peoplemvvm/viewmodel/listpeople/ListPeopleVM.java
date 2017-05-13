@@ -4,6 +4,7 @@ import android.content.Context;
 import android.databinding.BaseObservable;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
 import com.google.gson.Gson;
@@ -33,11 +34,13 @@ public class ListPeopleVM extends BaseViewModel<ListPeopleActivity> implements I
 
     public ListPeopleAdapter mListPeopleAdapter;
     public LinearLayoutManager mLinearLayoutManager;
+    public RecyclerView mRecyclerView;
 
-    PeopleData mPeopleData;
+    public PeopleData mPeopleData = new PeopleData();
 
-    public ListPeopleVM(@NonNull Context context) {
+    public ListPeopleVM(@NonNull Context context, RecyclerView recyclerView) {
         mContext = context;
+        mRecyclerView = recyclerView;
     }
 
 
@@ -45,10 +48,10 @@ public class ListPeopleVM extends BaseViewModel<ListPeopleActivity> implements I
     public void onLoad(){
         super.onLoad();
         Log.d(getClass().getName(), "onLoad()");
-        //Getting data from Network Interface
+        mLinearLayoutManager = new LinearLayoutManager(mContext,LinearLayoutManager.VERTICAL,false);
         compositeDisposable.add(
                 listPeopleAPIService.getPeopleList().subscribe(peopleData -> setData(peopleData),
-                throwable -> Log.d(getClass().getName(), throwable.getMessage())));
+                        throwable -> Log.d(getClass().getName(), throwable.getMessage())));
     }
 
     @Override
@@ -57,10 +60,9 @@ public class ListPeopleVM extends BaseViewModel<ListPeopleActivity> implements I
         clearCompositeDisposable();
     }
 
-    private void setData(PeopleData peopleData){
+    public void setData(PeopleData peopleData){
         mListPeopleAdapter = new ListPeopleAdapter(peopleData, mContext);
-        mLinearLayoutManager = new LinearLayoutManager(mContext,LinearLayoutManager.VERTICAL,false);
+        mRecyclerView.setAdapter(mListPeopleAdapter);
         mListPeopleAdapter.notifyDataSetChanged();
     }
-
 }

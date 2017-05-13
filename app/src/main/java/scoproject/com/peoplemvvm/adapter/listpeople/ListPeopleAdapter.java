@@ -28,6 +28,7 @@ public class ListPeopleAdapter extends RecyclerView.Adapter<ListPeopleAdapter.Vi
 
     public ListPeopleAdapter(PeopleData peopleData, Context context){
         mPeopleDatas = peopleData;
+        notifyDataSetChanged();
         mContext = context;
     }
 
@@ -42,7 +43,7 @@ public class ListPeopleAdapter extends RecyclerView.Adapter<ListPeopleAdapter.Vi
     public void onBindViewHolder(ViewHolder holder, int position) {
         switch (holder.getItemViewType()){
             case R.layout.item_people:
-                PeopleRowVM peopleRowVM = new PeopleRowVM(mPeopleDatas);
+                PeopleRowVM peopleRowVM = new PeopleRowVM(mPeopleDatas.getResults().get(position));
                 ((ItemPeopleBinding) holder.getDataBinding()).setVm(peopleRowVM);
         }
     }

@@ -17,10 +17,10 @@ import scoproject.com.peoplemvvm.model.PeopleResult;
 public class PeopleRowVM extends BaseObservable{
     public final ObservableField<String> mFullName = new ObservableField<>();
 
-    private PeopleData mPeopleData;
-    public  PeopleRowVM(PeopleData peopleData){
-        mPeopleData = peopleData;
-        mFullName.set(mPeopleData.getInfo().getVersion());
+    private PeopleResult mPeopleResult;
+    public  PeopleRowVM(PeopleResult peopleResult){
+        mPeopleResult = peopleResult;
+        mFullName.set(mPeopleResult.getName().getFirst());
     }
 
 }
