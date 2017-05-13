@@ -5,6 +5,7 @@ import android.app.Application;
 import dagger.Module;
 import dagger.Provides;
 import scoproject.com.peoplemvvm.PeopleMVVM;
+import scoproject.com.peoplemvvm.base.BaseRowViewModel;
 import scoproject.com.peoplemvvm.di.scope.AppScope;
 
 /**

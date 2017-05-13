@@ -17,6 +17,7 @@ import scoproject.com.peoplemvvm.databinding.ActivityListPeopleBinding;
 import scoproject.com.peoplemvvm.di.component.AppComponent;
 import scoproject.com.peoplemvvm.networking.listpeople.ListPeopleAPIService;
 import scoproject.com.peoplemvvm.viewmodel.listpeople.ListPeopleVM;
+import scoproject.com.peoplemvvm.viewmodel.listpeople.PeopleRowVM;
 
 /**
  * Created by ibnumuzzakkir on 4/22/17.
@@ -27,6 +28,7 @@ public class ListPeopleActivity extends BaseActivity<ListPeopleVM> {
     private ListPeopleComponent mComponent;
     private ListPeopleVM mViewModel;
     private ActivityListPeopleBinding activityListPeopleBinding;
+
 
     @Override
     protected void initDataBinding() {

@@ -41,7 +41,6 @@ public class ListPeopleVM extends BaseViewModel<ListPeopleActivity> implements I
 
     private boolean isLoading;
 
-
     public ListPeopleVM(@NonNull Context context, ActivityListPeopleBinding activityListPeopleBinding) {
         mContext = context;
         mActivityListPeopleBinding = activityListPeopleBinding;
@@ -49,36 +48,41 @@ public class ListPeopleVM extends BaseViewModel<ListPeopleActivity> implements I
 
 
     @Override
-    public void onLoad(){
+    public void onLoad() {
         super.onLoad();
 //        Log.d(getClass().getName(), "onLoad()");
         setLoading(true);
-        mLinearLayoutManager = new LinearLayoutManager(mContext,LinearLayoutManager.VERTICAL,false);
+        mLinearLayoutManager = new LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false);
         compositeDisposable.add(
-                listPeopleAPIService.getPeopleList().subscribe(peopleData -> setData(peopleData),
+                listPeopleAPIService.getPeopleList().subscribe(peopleData -> setAdapter(peopleData),
                         throwable -> Log.d(getClass().getName(), throwable.getMessage())));
     }
 
     @Override
-    public void onStop(){
+    public void onStop() {
         super.onStop();
         clearCompositeDisposable();
     }
 
-    public void setData(PeopleData peopleData){
-        setLoading(false);
+
+    @Override
+    public void setAdapter(PeopleData peopleData) {
         mListPeopleAdapter = new ListPeopleAdapter(peopleData, mContext);
-        mActivityListPeopleBinding.listPeople.setAdapter(mListPeopleAdapter);
+        setLoading(false);
         mListPeopleAdapter.notifyDataSetChanged();
     }
 
-    @Bindable
-    public boolean isLoading(){
-        return isLoading;
-    }
-
-    public void setLoading(boolean loading){
+    @Override
+    public void setLoading(boolean loading) {
         isLoading = loading;
         notifyPropertyChanged(BR._all);
     }
+
+    @Bindable
+    @Override
+    public boolean isLoading() {
+        return isLoading;
+    }
 }
+
+

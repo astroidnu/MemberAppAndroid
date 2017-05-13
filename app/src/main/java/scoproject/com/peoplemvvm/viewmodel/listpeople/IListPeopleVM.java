@@ -8,7 +8,7 @@ import scoproject.com.peoplemvvm.model.PeopleData;
  */
 
 public interface IListPeopleVM {
-    void onLoad();
-    void onStop();
-
+    void setAdapter(PeopleData peopleData);
+    void setLoading(boolean loading);
+    boolean isLoading();
 }

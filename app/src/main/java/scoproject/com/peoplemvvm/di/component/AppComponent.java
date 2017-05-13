@@ -8,6 +8,7 @@ import java.io.File;
 
 import dagger.Component;
 import scoproject.com.peoplemvvm.PeopleMVVM;
+import scoproject.com.peoplemvvm.base.BaseRowViewModel;
 import scoproject.com.peoplemvvm.di.module.AppModule;
 import scoproject.com.peoplemvvm.di.module.AppUIModule;
 import scoproject.com.peoplemvvm.di.module.NetworkModule;

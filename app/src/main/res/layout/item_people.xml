@@ -9,6 +9,7 @@
             type="scoproject.com.peoplemvvm.viewmodel.listpeople.PeopleRowVM"/>
     </data>
     <LinearLayout
+        android:onClick="@{()->vm.onClick()}"
         android:padding="10dp"
         android:orientation="vertical"
         android:layout_width="match_parent"

@@ -4,6 +4,7 @@ import dagger.Component;
 import scoproject.com.peoplemvvm.di.component.AppComponent;
 import scoproject.com.peoplemvvm.networking.listpeople.ListPeopleAPIService;
 import scoproject.com.peoplemvvm.viewmodel.listpeople.ListPeopleVM;
+import scoproject.com.peoplemvvm.viewmodel.listpeople.PeopleRowVM;
 
 /**
  * Created by ibnumuzzakkir on 4/22/17.
@@ -14,4 +15,5 @@ import scoproject.com.peoplemvvm.viewmodel.listpeople.ListPeopleVM;
 public interface ListPeopleComponent {
     void inject(ListPeopleActivity addMemberActivity);
     void inject(ListPeopleVM listPeopleVM);
+    void inject(PeopleRowVM peopleRowVM);
 }

@@ -14,6 +14,7 @@ import scoproject.com.peoplemvvm.R;
 import scoproject.com.peoplemvvm.databinding.ItemPeopleBinding;
 import scoproject.com.peoplemvvm.model.PeopleData;
 import scoproject.com.peoplemvvm.model.PeopleResult;
+import scoproject.com.peoplemvvm.view.listpeople.ListPeopleComponent;
 import scoproject.com.peoplemvvm.viewmodel.listpeople.PeopleRowVM;
 
 /**
@@ -28,10 +29,8 @@ public class ListPeopleAdapter extends RecyclerView.Adapter<ListPeopleAdapter.Vi
 
     public ListPeopleAdapter(PeopleData peopleData, Context context){
         mPeopleDatas = peopleData;
-        notifyDataSetChanged();
         mContext = context;
     }
-
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -44,6 +43,7 @@ public class ListPeopleAdapter extends RecyclerView.Adapter<ListPeopleAdapter.Vi
         switch (holder.getItemViewType()){
             case R.layout.item_people:
                 PeopleRowVM peopleRowVM = new PeopleRowVM(mPeopleDatas.getResults().get(position));
+                peopleRowVM.takeContext(mContext);
                 ((ItemPeopleBinding) holder.getDataBinding()).setVm(peopleRowVM);
         }
     }
@@ -72,5 +72,10 @@ public class ListPeopleAdapter extends RecyclerView.Adapter<ListPeopleAdapter.Vi
             return mViewDataBinding;
         }
     }
+
+    public Context getContext(){
+        return mContext;
+    }
+
 
 }
