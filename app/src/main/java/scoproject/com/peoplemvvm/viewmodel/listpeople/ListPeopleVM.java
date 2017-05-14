@@ -40,7 +40,8 @@ public class ListPeopleVM extends BaseViewModel<ListPeopleActivity> implements I
     public LinearLayoutManager mLinearLayoutManager;
     public ActivityListPeopleBinding mActivityListPeopleBinding;
 
-    private boolean isLoading;
+    private boolean isLoading = false;
+    private boolean isRefreshing = false;
 
     public ListPeopleVM(@NonNull Context context, ActivityListPeopleBinding activityListPeopleBinding) {
         mContext = context;
@@ -54,9 +55,6 @@ public class ListPeopleVM extends BaseViewModel<ListPeopleActivity> implements I
         setLoading(true);
         mLinearLayoutManager = new LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false);
         getListPeopleData();
-        mActivityListPeopleBinding.listPeopleSwipeLayout.setOnRefreshListener(() -> {
-            getListPeopleData();
-        });
     }
 
     @Override
@@ -70,8 +68,8 @@ public class ListPeopleVM extends BaseViewModel<ListPeopleActivity> implements I
     public void setAdapter(PeopleData peopleData) {
         mListPeopleAdapter = new ListPeopleAdapter(peopleData, mContext);
         setLoading(false);
+        setRefreshing(false);
         mListPeopleAdapter.notifyDataSetChanged();
-        mActivityListPeopleBinding.listPeopleSwipeLayout.setRefreshing(false);
     }
 
     @Override
@@ -92,6 +90,25 @@ public class ListPeopleVM extends BaseViewModel<ListPeopleActivity> implements I
     public boolean isLoading() {
         return isLoading;
     }
+
+    @Override
+    public boolean isRefreshing() {
+        return isRefreshing;
+    }
+
+    @Override
+    public void setRefreshing(boolean refreshing) {
+        isRefreshing = refreshing;
+        notifyPropertyChanged(BR._all);
+    }
+
+    @Override
+    public void onRefresh() {
+        setRefreshing(true);
+        getListPeopleData();
+    }
+
+
 }
 
 

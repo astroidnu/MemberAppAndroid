@@ -10,7 +10,9 @@
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/list_people_swipe_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        app:refreshing="@{vm.isRefreshing}"
+        app:onRefreshListener="@{() -> vm.onRefresh()}">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
