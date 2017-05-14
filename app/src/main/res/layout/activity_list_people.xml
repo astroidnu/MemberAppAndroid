@@ -7,20 +7,25 @@
             name="vm"
             type="scoproject.com.peoplemvvm.viewmodel.listpeople.ListPeopleVM"/>
     </data>
-    <RelativeLayout
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/list_people_swipe_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <ProgressBar
-            android:id="@+id/list_people_progress_bar"
-            android:layout_centerInParent="true"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:visibility="@{vm.isLoading ? View.VISIBLE : View.GONE}"/>
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/list_people_recycleview"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:adapter="@{vm.mListPeopleAdapter}"
-            app:layoutManager="@{vm.mLinearLayoutManager}"/>
-    </RelativeLayout>
+            android:layout_height="match_parent">
+            <ProgressBar
+                android:id="@+id/list_people_progress_bar"
+                android:layout_centerInParent="true"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:visibility="@{vm.isLoading ? View.VISIBLE : View.GONE}"/>
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/list_people_recycleview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:adapter="@{vm.mListPeopleAdapter}"
+                app:layoutManager="@{vm.mLinearLayoutManager}"/>
+        </RelativeLayout>
+    </android.support.v4.widget.SwipeRefreshLayout>
 </layout>

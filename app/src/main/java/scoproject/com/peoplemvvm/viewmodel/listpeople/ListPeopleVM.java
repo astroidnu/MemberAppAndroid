@@ -4,6 +4,7 @@ import android.content.Context;
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
 import android.support.annotation.NonNull;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -50,12 +51,12 @@ public class ListPeopleVM extends BaseViewModel<ListPeopleActivity> implements I
     @Override
     public void onLoad() {
         super.onLoad();
-//        Log.d(getClass().getName(), "onLoad()");
         setLoading(true);
         mLinearLayoutManager = new LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false);
-        compositeDisposable.add(
-                listPeopleAPIService.getPeopleList().subscribe(peopleData -> setAdapter(peopleData),
-                        throwable -> Log.d(getClass().getName(), throwable.getMessage())));
+        getListPeopleData();
+        mActivityListPeopleBinding.listPeopleSwipeLayout.setOnRefreshListener(() -> {
+            getListPeopleData();
+        });
     }
 
     @Override
@@ -70,12 +71,20 @@ public class ListPeopleVM extends BaseViewModel<ListPeopleActivity> implements I
         mListPeopleAdapter = new ListPeopleAdapter(peopleData, mContext);
         setLoading(false);
         mListPeopleAdapter.notifyDataSetChanged();
+        mActivityListPeopleBinding.listPeopleSwipeLayout.setRefreshing(false);
     }
 
     @Override
     public void setLoading(boolean loading) {
         isLoading = loading;
         notifyPropertyChanged(BR._all);
+    }
+
+    @Override
+    public void getListPeopleData(){
+        compositeDisposable.add(
+                listPeopleAPIService.getPeopleList().subscribe(peopleData -> setAdapter(peopleData),
+                        throwable -> Log.d(getClass().getName(), throwable.getMessage())));
     }
 
     @Bindable

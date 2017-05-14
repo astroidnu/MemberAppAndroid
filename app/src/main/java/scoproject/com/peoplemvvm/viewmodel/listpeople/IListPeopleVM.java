@@ -11,4 +11,5 @@ public interface IListPeopleVM {
     void setAdapter(PeopleData peopleData);
     void setLoading(boolean loading);
     boolean isLoading();
+    void getListPeopleData();
 }
