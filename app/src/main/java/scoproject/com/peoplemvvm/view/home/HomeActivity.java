@@ -31,6 +31,11 @@ public class HomeActivity extends BaseActivity<HomeVM> {
     }
 
     @Override
+    public int getLayout() {
+        return R.layout.activity_home;
+    }
+
+    @Override
     protected void onCreateComponent(AppComponent appComponent) {
         mComponent = DaggerHomeComponent.builder().appComponent(appComponent).build();
         mComponent.inject(this);

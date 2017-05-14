@@ -45,6 +45,11 @@ public class ListPeopleActivity extends BaseActivity<ListPeopleVM> {
     }
 
     @Override
+    public int getLayout() {
+        return R.layout.activity_list_people;
+    }
+
+    @Override
     protected void onCreateComponent(AppComponent appComponent) {
         mComponent = DaggerListPeopleComponent.builder().appComponent(appComponent).build();
         mComponent.inject(this);

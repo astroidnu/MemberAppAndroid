@@ -3,6 +3,7 @@ package scoproject.com.peoplemvvm.view.addmember;
 import android.app.Activity;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
+import android.databinding.ViewDataBinding;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 
@@ -10,7 +11,7 @@ import java.util.Observable;
 
 import butterknife.ButterKnife;
 import scoproject.com.peoplemvvm.R;
-import scoproject.com.peoplemvvm.base.BaseActivity;
+import scoproject.com.peoplemvvm.base.  BaseActivity;
 import scoproject.com.peoplemvvm.base.ui.ActivityScreen;
 import scoproject.com.peoplemvvm.databinding.ActivityAddMemberBinding;
 import scoproject.com.peoplemvvm.di.component.AppComponent;
@@ -39,6 +40,11 @@ public class AddMemberActivity extends BaseActivity<AddMemberVM> {
     @Override
     public void update(Observable o, Object arg) {
 
+    }
+
+    @Override
+    public int getLayout() {
+        return R.layout.activity_add_member;
     }
 
     @Override

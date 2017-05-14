@@ -3,9 +3,11 @@ package scoproject.com.peoplemvvm.base;
 import android.content.Context;
 import android.content.Intent;
 import android.databinding.BaseObservable;
+import android.databinding.ViewDataBinding;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.support.annotation.CallSuper;
+import android.util.Log;
 
 import java.util.Observable;
 
@@ -28,7 +30,7 @@ public class BaseViewModel<T extends Context> extends BaseObservable {
 
     public final void takeContext(T context){
         if(context == null){
-            throw new NullPointerException("Context must not be null");
+            throw new NullPointerException("Context must be not null");
         }
 
         if (this.context != context) {
@@ -58,6 +60,7 @@ public class BaseViewModel<T extends Context> extends BaseObservable {
     public final T getContext() {
         return context;
     }
+
 
     public void clearCompositeDisposable() {
         compositeDisposable.clear();
