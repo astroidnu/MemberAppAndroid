@@ -42,15 +42,24 @@ public class ListPeopleAdapter extends RecyclerView.Adapter<ListPeopleAdapter.Vi
     public void onBindViewHolder(ViewHolder holder, int position) {
         switch (holder.getItemViewType()){
             case R.layout.item_people:
-                PeopleRowVM peopleRowVM = new PeopleRowVM(mPeopleDatas.getResults().get(position));
+                PeopleRowVM peopleRowVM = new PeopleRowVM(mPeopleDatas.getResults().get(position),  ((ItemPeopleBinding) holder.getDataBinding()));
                 peopleRowVM.takeContext(mContext);
                 ((ItemPeopleBinding) holder.getDataBinding()).setVm(peopleRowVM);
+                break;
+            case R.layout.item_divider:
+                break;
         }
     }
 
     @Override
     public int getItemViewType(int position) {
-        return R.layout.item_people;
+        if(position == 0){
+            return R.layout.item_divider;
+        }else if(position % 2 == 0){
+            return R.layout.item_divider;
+        }else{
+            return R.layout.item_people;
+        }
     }
 
 

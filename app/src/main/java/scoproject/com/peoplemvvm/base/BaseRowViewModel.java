@@ -2,6 +2,8 @@ package scoproject.com.peoplemvvm.base;
 
 import android.content.Context;
 import android.databinding.BaseObservable;
+import android.databinding.ViewDataBinding;
+import android.support.annotation.NonNull;
 import android.util.Log;
 
 import scoproject.com.peoplemvvm.PeopleMVVM;

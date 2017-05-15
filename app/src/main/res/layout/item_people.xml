@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    tools:context="scoproject.com.peoplemvvm.view.home.HomeActivity"
+<layout tools:context="scoproject.com.peoplemvvm.view.home.HomeActivity"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
             name="vm"
@@ -10,18 +10,44 @@
     </data>
     <LinearLayout
         android:onClick="@{()->vm.onClick()}"
-        android:padding="10dp"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <TextView
-                android:padding="10dp"
-                android:text="@={vm.mFullName}"
+            android:layout_height="match_parent">
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/item_people_imageview"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"/>
+                <LinearLayout
+                    android:layout_toRightOf="@id/item_people_imageview"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:textStyle="bold"
+                        android:paddingLeft="10dp"
+                        android:textSize="16sp"
+                        android:text="@={vm.mFullName}"
+                        android:textAllCaps="true"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:paddingLeft="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text= "@={vm.mLocation}"/>
+                    <TextView
+                        android:paddingLeft="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text= "@={vm.mPhoneNumber}"/>
+                </LinearLayout>
+            </RelativeLayout>
         </android.support.v7.widget.CardView>
     </LinearLayout>
 </layout>
