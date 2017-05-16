@@ -35,7 +35,7 @@ public class ListPeopleAPIService {
     }
 
     public Flowable<PeopleData> getPeopleList() {
-        return mNetworkService.getPeopleList()
+        return mNetworkService.getPeopleList(String.valueOf(mLimit),"AU")
                 .subscribeOn(Schedulers.computation())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnError(this::handleAccountError)

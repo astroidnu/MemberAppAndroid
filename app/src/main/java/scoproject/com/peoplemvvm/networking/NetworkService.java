@@ -4,6 +4,7 @@ import io.reactivex.Observable;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Query;
 import scoproject.com.peoplemvvm.model.Member;
 import scoproject.com.peoplemvvm.model.PeopleData;
 import scoproject.com.peoplemvvm.model.PeopleResult;
@@ -18,6 +19,6 @@ public interface NetworkService {
     Observable<AddMemberResponse> addMember(@Body Member member);
 
     //Getting data from API Random User me
-    @GET("?nat=AU&results=20")
-    Observable<PeopleData> getPeopleList();
+    @GET("/api")
+    Observable<PeopleData> getPeopleList(@Query("results") String result, @Query("nat") String nat);
 }

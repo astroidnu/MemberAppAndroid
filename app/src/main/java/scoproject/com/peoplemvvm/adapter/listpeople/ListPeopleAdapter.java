@@ -53,13 +53,7 @@ public class ListPeopleAdapter extends RecyclerView.Adapter<ListPeopleAdapter.Vi
 
     @Override
     public int getItemViewType(int position) {
-        if(position == 0){
-            return R.layout.item_divider;
-        }else if(position % 2 == 0){
-            return R.layout.item_divider;
-        }else{
-            return R.layout.item_people;
-        }
+        return R.layout.item_people;
     }
 
 

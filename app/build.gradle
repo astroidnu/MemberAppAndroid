@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'android-apt'
 apply plugin: 'me.tatarka.retrolambda'
+apply plugin: 'realm-android'
 
 android {
     compileSdkVersion 25
@@ -17,7 +18,7 @@ android {
         buildConfigField "int", "CACHETIME", "432000" // 5days
         buildConfigField "int", "LIMIT", "100"
         buildConfigField "String", "COUNTRY", "\"EN\""
-        buildConfigField "String", "BASEURL", "\"https://randomuser.me/api/?\""
+        buildConfigField "String", "BASEURL", "\"https://randomuser.me\""
     }
 
     dataBinding {

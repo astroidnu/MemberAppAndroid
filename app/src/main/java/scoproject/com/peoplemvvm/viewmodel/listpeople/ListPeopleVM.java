@@ -56,7 +56,7 @@ public class ListPeopleVM extends BaseViewModel<ListPeopleActivity> implements I
     public void onLoad() {
         super.onLoad();
         mLinearLayoutManager = new LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false);
-        getListPeopleData(20);
+        getListPeopleData(10);
         handleOnScrolledRV();
     }
 
@@ -84,7 +84,7 @@ public class ListPeopleVM extends BaseViewModel<ListPeopleActivity> implements I
 
     @Override
     public void getListPeopleData(int limit){
-        setLoading(true);
+        setRefreshing(true);
         listPeopleAPIService.init(limit);
         compositeDisposable.add(
                 listPeopleAPIService.getPeopleList().subscribe(peopleData -> setAdapter(peopleData),
@@ -111,7 +111,7 @@ public class ListPeopleVM extends BaseViewModel<ListPeopleActivity> implements I
     @Override
     public void onRefresh() {
         setRefreshing(true);
-        getListPeopleData(20);
+        getListPeopleData(10);
     }
 
     public void handleOnScrolledRV(){
@@ -125,7 +125,8 @@ public class ListPeopleVM extends BaseViewModel<ListPeopleActivity> implements I
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
                 if (RVUtils.lastVisibleItemPosition(recyclerView) >= mPeopleData.getResults().size() - 1) {
-//                    getListPeopleData(mPeopleData.getResults().size() + 5);
+                    Log.d(getClass().getName(), String.valueOf(RVUtils.lastVisibleItemPosition(recyclerView)));
+                    getListPeopleData(mPeopleData.getResults().size() + 5);
                 }
             }
         });
