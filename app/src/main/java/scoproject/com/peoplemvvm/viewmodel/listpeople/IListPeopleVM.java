@@ -14,5 +14,5 @@ public interface IListPeopleVM {
     boolean isRefreshing();
     void setRefreshing(boolean refreshing);
     void onRefresh();
-    void getListPeopleData();
+    void getListPeopleData(int limit);
 }

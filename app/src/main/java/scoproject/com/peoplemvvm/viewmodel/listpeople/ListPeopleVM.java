@@ -8,6 +8,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
 
 import com.google.gson.Gson;
 
@@ -21,6 +22,7 @@ import scoproject.com.peoplemvvm.databinding.ActivityListPeopleBinding;
 import scoproject.com.peoplemvvm.model.PeopleData;
 import scoproject.com.peoplemvvm.model.PeopleResult;
 import scoproject.com.peoplemvvm.networking.listpeople.ListPeopleAPIService;
+import scoproject.com.peoplemvvm.utils.RVUtils;
 import scoproject.com.peoplemvvm.view.listpeople.ListPeopleActivity;
 
 /**
@@ -42,6 +44,7 @@ public class ListPeopleVM extends BaseViewModel<ListPeopleActivity> implements I
 
     private boolean isLoading = false;
     private boolean isRefreshing = false;
+    private PeopleData mPeopleData;
 
     public ListPeopleVM(@NonNull Context context, ActivityListPeopleBinding activityListPeopleBinding) {
         mContext = context;
@@ -52,9 +55,9 @@ public class ListPeopleVM extends BaseViewModel<ListPeopleActivity> implements I
     @Override
     public void onLoad() {
         super.onLoad();
-        setLoading(true);
         mLinearLayoutManager = new LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false);
-        getListPeopleData();
+        getListPeopleData(20);
+        handleOnScrolledRV();
     }
 
     @Override
@@ -66,6 +69,7 @@ public class ListPeopleVM extends BaseViewModel<ListPeopleActivity> implements I
 
     @Override
     public void setAdapter(PeopleData peopleData) {
+        mPeopleData = peopleData;
         mListPeopleAdapter = new ListPeopleAdapter(peopleData, mContext);
         setLoading(false);
         setRefreshing(false);
@@ -79,7 +83,9 @@ public class ListPeopleVM extends BaseViewModel<ListPeopleActivity> implements I
     }
 
     @Override
-    public void getListPeopleData(){
+    public void getListPeopleData(int limit){
+        setLoading(true);
+        listPeopleAPIService.init(limit);
         compositeDisposable.add(
                 listPeopleAPIService.getPeopleList().subscribe(peopleData -> setAdapter(peopleData),
                         throwable -> Log.d(getClass().getName(), throwable.getMessage())));
@@ -105,10 +111,25 @@ public class ListPeopleVM extends BaseViewModel<ListPeopleActivity> implements I
     @Override
     public void onRefresh() {
         setRefreshing(true);
-        getListPeopleData();
+        getListPeopleData(20);
     }
 
+    public void handleOnScrolledRV(){
+        mActivityListPeopleBinding.listPeopleRecycleview.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+            }
 
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                if (RVUtils.lastVisibleItemPosition(recyclerView) >= mPeopleData.getResults().size() - 1) {
+//                    getListPeopleData(mPeopleData.getResults().size() + 5);
+                }
+            }
+        });
+    }
 }
 
 

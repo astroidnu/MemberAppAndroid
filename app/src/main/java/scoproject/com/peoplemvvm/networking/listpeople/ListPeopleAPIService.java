@@ -23,6 +23,12 @@ import scoproject.com.peoplemvvm.networking.addmember.AddMemberResponse;
 
 public class ListPeopleAPIService {
     private NetworkService mNetworkService;
+    private int mLimit;
+
+
+    public void init(int limit){
+        mLimit = limit;
+    }
 
     public ListPeopleAPIService(NetworkService networkService){
         mNetworkService = networkService;
