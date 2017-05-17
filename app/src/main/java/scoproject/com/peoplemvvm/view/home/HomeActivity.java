@@ -18,8 +18,8 @@ public class HomeActivity extends BaseActivity<HomeVM, ActivityHomeBinding> {
     private ActivityHomeBinding activityHomeBinding;
 
     @Override
-    protected void initDataBinding() {
-        activityHomeBinding = DataBindingUtil.setContentView(this, R.layout.activity_home);
+    protected void onCreateUI(Bundle bundle) {
+        onInitDataBinding(R.layout.activity_home);
         mViewModel = new HomeVM(this);
         activityHomeBinding.setVm(mViewModel);
         mComponent.inject(mViewModel);
@@ -28,11 +28,6 @@ public class HomeActivity extends BaseActivity<HomeVM, ActivityHomeBinding> {
     @Override
     public void update(Observable o, Object arg) {
 
-    }
-
-    @Override
-    public int getLayout() {
-        return R.layout.activity_home;
     }
 
     @Override

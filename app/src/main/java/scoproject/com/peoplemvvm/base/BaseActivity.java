@@ -28,11 +28,12 @@ import scoproject.com.peoplemvvm.di.component.AppComponent;
  */
 
 public abstract class BaseActivity<T extends BaseViewModel, B extends ViewDataBinding>  extends AppCompatActivity implements Observer {
-    protected abstract void initDataBinding();
+//    protected abstract void initDataBinding();
     public abstract void update(Observable o, Object arg);
-    public abstract int getLayout();
     private T mBaseVM = null;
     private B mBinding = null;
+
+    protected abstract void onCreateUI(Bundle bundle);
 
     @Inject
     ActivityScreenSwitcher activityScreenSwitcher;
@@ -41,12 +42,13 @@ public abstract class BaseActivity<T extends BaseViewModel, B extends ViewDataBi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         onCreateComponent(PeopleMVVM.getApp().component());
-        initDataBinding();
+//        initDataBinding();
         if (activityScreenSwitcher == null) {
             throw new IllegalStateException(
                     "No injection happened. Add component.inject(this) in onCreateComponent() implementation.");
         }
         activityScreenSwitcher.attach(this);
+        onCreateUI(savedInstanceState);
     }
 
     public void setupObserver(Observable observable) {
