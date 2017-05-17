@@ -7,7 +7,6 @@ import retrofit2.http.POST;
 import retrofit2.http.Query;
 import scoproject.com.peoplemvvm.model.Member;
 import scoproject.com.peoplemvvm.model.PeopleData;
-import scoproject.com.peoplemvvm.model.PeopleResult;
 import scoproject.com.peoplemvvm.networking.addmember.AddMemberResponse;
 
 /**

@@ -5,11 +5,13 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
+import io.realm.RealmObject;
+
 /**
  * Created by ibnumuzzakkir on 5/1/17.
  */
 
-public class PeopleData {
+public class PeopleData{
     @SerializedName("results")
     @Expose
     private List<PeopleResult> results = null;

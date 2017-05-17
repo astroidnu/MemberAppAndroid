@@ -1,7 +1,6 @@
 package scoproject.com.peoplemvvm.viewmodel.listpeople;
 
 import android.databinding.ObservableField;
-import android.util.Log;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
@@ -9,7 +8,6 @@ import com.google.gson.Gson;
 
 import javax.inject.Inject;
 
-import scoproject.com.peoplemvvm.R;
 import scoproject.com.peoplemvvm.base.BaseRowViewModel;
 import scoproject.com.peoplemvvm.base.ui.ActivityScreenSwitcher;
 import scoproject.com.peoplemvvm.databinding.ItemPeopleBinding;

@@ -12,7 +12,7 @@ import scoproject.com.peoplemvvm.databinding.ActivityHomeBinding;
 import scoproject.com.peoplemvvm.di.component.AppComponent;
 import scoproject.com.peoplemvvm.viewmodel.home.HomeVM;
 
-public class HomeActivity extends BaseActivity<HomeVM> {
+public class HomeActivity extends BaseActivity<HomeVM, ActivityHomeBinding> {
     private HomeVM mViewModel;
     private HomeComponent mComponent;
     private ActivityHomeBinding activityHomeBinding;

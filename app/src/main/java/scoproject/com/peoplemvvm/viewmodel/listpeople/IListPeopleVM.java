@@ -1,6 +1,5 @@
 package scoproject.com.peoplemvvm.viewmodel.listpeople;
 
-import io.reactivex.Observable;
 import scoproject.com.peoplemvvm.model.PeopleData;
 
 /**

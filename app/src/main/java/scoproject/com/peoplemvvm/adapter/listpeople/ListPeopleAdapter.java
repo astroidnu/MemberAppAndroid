@@ -5,16 +5,11 @@ import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-
-import java.util.List;
 
 import scoproject.com.peoplemvvm.R;
 import scoproject.com.peoplemvvm.databinding.ItemPeopleBinding;
 import scoproject.com.peoplemvvm.model.PeopleData;
-import scoproject.com.peoplemvvm.model.PeopleResult;
-import scoproject.com.peoplemvvm.view.listpeople.ListPeopleComponent;
 import scoproject.com.peoplemvvm.viewmodel.listpeople.PeopleRowVM;
 
 /**

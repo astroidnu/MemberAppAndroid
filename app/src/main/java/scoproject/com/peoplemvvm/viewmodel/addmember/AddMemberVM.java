@@ -5,22 +5,13 @@ import android.content.Context;
 import android.databinding.ObservableField;
 import android.support.annotation.NonNull;
 import android.util.Log;
-import android.widget.DatePicker;
-import android.widget.EditText;
 
 import com.google.gson.Gson;
 
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Observable;
 
 import javax.inject.Inject;
 
-import butterknife.BindView;
-import butterknife.OnClick;
-import scoproject.com.peoplemvvm.R;
 import scoproject.com.peoplemvvm.base.BaseViewModel;
 import scoproject.com.peoplemvvm.model.Member;
 import scoproject.com.peoplemvvm.view.addmember.AddMemberActivity;

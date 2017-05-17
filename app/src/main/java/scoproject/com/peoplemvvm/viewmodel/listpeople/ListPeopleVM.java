@@ -1,14 +1,11 @@
 package scoproject.com.peoplemvvm.viewmodel.listpeople;
 
 import android.content.Context;
-import android.databinding.BaseObservable;
 import android.databinding.Bindable;
 import android.support.annotation.NonNull;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.View;
 
 import com.google.gson.Gson;
 
@@ -20,7 +17,6 @@ import scoproject.com.peoplemvvm.adapter.listpeople.ListPeopleAdapter;
 import scoproject.com.peoplemvvm.base.BaseViewModel;
 import scoproject.com.peoplemvvm.databinding.ActivityListPeopleBinding;
 import scoproject.com.peoplemvvm.model.PeopleData;
-import scoproject.com.peoplemvvm.model.PeopleResult;
 import scoproject.com.peoplemvvm.networking.listpeople.ListPeopleAPIService;
 import scoproject.com.peoplemvvm.utils.RVUtils;
 import scoproject.com.peoplemvvm.view.listpeople.ListPeopleActivity;

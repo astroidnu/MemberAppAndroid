@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
 import android.os.Bundle;
+import android.support.annotation.LayoutRes;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.util.SparseArray;
@@ -25,10 +27,12 @@ import scoproject.com.peoplemvvm.di.component.AppComponent;
  * Created by ibnumuzzakkir on 4/21/17.
  */
 
-public abstract class BaseActivity<T extends BaseViewModel>  extends AppCompatActivity implements Observer {
+public abstract class BaseActivity<T extends BaseViewModel, B extends ViewDataBinding>  extends AppCompatActivity implements Observer {
     protected abstract void initDataBinding();
     public abstract void update(Observable o, Object arg);
     public abstract int getLayout();
+    private T mBaseVM = null;
+    private B mBinding = null;
 
     @Inject
     ActivityScreenSwitcher activityScreenSwitcher;
@@ -37,7 +41,6 @@ public abstract class BaseActivity<T extends BaseViewModel>  extends AppCompatAc
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         onCreateComponent(PeopleMVVM.getApp().component());
-        onInitDataBinding();
         initDataBinding();
         if (activityScreenSwitcher == null) {
             throw new IllegalStateException(
@@ -84,12 +87,11 @@ public abstract class BaseActivity<T extends BaseViewModel>  extends AppCompatAc
         activityScreenSwitcher.attach(this);
     }
 
-    public void onInitDataBinding() {
-        if(getLayout() != 0){
-            Log.d(getClass().getName(), "Hello view not null");
-            ViewDataBinding viewDataBinding = DataBindingUtil.setContentView(this, getLayout());
+    protected final void onInitDataBinding(@LayoutRes int LayoutRes) {
+        if(mBaseVM == null){
+            throw  new NullPointerException("VM Must be not null");
         }else{
-            Log.e(getClass().getName(), "View Null");
+            mBinding = DataBindingUtil.setContentView(this,LayoutRes);
         }
     }
 
